@@ -530,3 +530,55 @@ Es un sistema de Planificación de Recursos Empresariales. Gestiona los procesos
 **No, conceptualmente Salesforce es un CRM** (Front-Office: gestión del cliente). Aunque Salesforce tiene capacidades para integrarse con ERPs y gestionar ciertas operaciones, su núcleo es la venta y el servicio, no la contabilidad ni la fabricación. Sin embargo, Salesforce posee una plataforma (AppExchange) donde puedes instalar soluciones que funcionan como ERP (como Rootstock) dentro del ecosistema.
 
 ---
+
+## Punto 7 – Ejercicio de Trigger + Callout (Procontacto)
+
+En este ejercicio se desarrolló la integración entre Salesforce y el servicio web de Procontacto para actualizar automáticamente el correo electrónico de un contacto según su idprocontacto.
+
+---
+
+### A. Obtención del ID
+
+Realicé una consulta GET con Postman al endpoint:
+
+`https://procontacto-reclutamiento-default-rtdb.firebaseio.com/contacts.json`
+
+De la respuesta, identifiqué mi ID personal, que luego utilicé para realizar las pruebas del ejercicio.
+
+---
+
+### B. Configuración (Setup)
+
+1. **Campo Personalizado**: Se creó el campo idprocontacto en el objeto Contact (Tipo Texto 255) marcando la casilla de "External ID" (Identificador externo) para indexar las búsquedas.
+2. **Remote Site Settings**: Se configuró el sitio remoto en Salesforce para autorizar la salida de tráfico hacia la URL de la **API**.
+
+### C. Desarrollo del trigger y el callout
+
+Se implementó un trigger en Contact que, al crear o modificar un registro donde el campo idprocontacto esté completo, ejecuta un método @future(callout=true) que:
+
+1. Consulta el servicio web:
+``https://procontacto-reclutamiento-default-rtdb.firebaseio.com/contacts/{ID}.json``
+2. Extrae el email de la respuesta JSON.
+3. Actualiza el campo Email del Contact en Salesforce.
+
+Se utilizaron:
+* `ContactTrigger.apxt`
+* `ContactCalloutClass.apxc`
+
+para manejar el callout Llamada HTTP GET y parseo mediante JSON.deserializeUntyped
+
+---
+
+## D. Pruebas
+
+Para probar la funcionalidad:
+* Crear o editar un Contact.
+* Completar el campo idprocontacto con el ID obtenido en Postman.
+* Guardar el contacto.
+* Verificar que el campo Email se complete automáticamente con el valor devuelto por el servicio REST.
+
+---
+
+## E. Código incluido en el repositorio
+* Trigger: ContactTrigger.apxt
+* Handler con callout: ContactCalloutClass.apxc
