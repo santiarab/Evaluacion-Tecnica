@@ -1,6 +1,6 @@
 # Evaluación Técnica
 
-## Ejercicio 1: 
+## Ejercicio 1 – HTTP básico
 
 ### 1. ¿Qué es un servidor HTTP?
 
@@ -197,8 +197,7 @@ Para verificar la resolución de los ejercicios prácticos y los badges obtenido
 
 ---
 
-## Ejercicio 5: 
-
+## Ejercicio 5 – Modelo de Datos de Salesforce (Objetos Estándar y Relaciones)
 ### 1. **Lead**
 **Concepto:**  
 Representa un prospecto sin calificar. Es una persona o empresa interesada, pero aún no se determinó si vale la pena seguir el proceso de ventas.
@@ -342,7 +341,7 @@ Documento dentro de la Base de Conocimientos de Salesforce (FAQ, instructivos, t
 ![alt text](images/diagrama.jpg)
 
 
-## Ejercicio 6: 
+## Ejercicio 6 – Conceptos Esenciales del Desarrollo en Salesforce
 
 ### Soluciones de Salesforce
 
