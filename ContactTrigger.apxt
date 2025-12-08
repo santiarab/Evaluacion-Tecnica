@@ -1,0 +1,22 @@
+trigger ContactTrigger on Contact (after insert, after update) {
+    
+    List<Id> idsToProcess = new List<Id>();
+
+    for (Contact c : Trigger.new) {
+        if (c.idprocontacto__c != null) {
+            if (Trigger.isInsert) {
+                idsToProcess.add(c.Id);
+            } 
+            else if (Trigger.isUpdate) {
+                Contact oldContact = Trigger.oldMap.get(c.Id);
+                if (c.idprocontacto__c != oldContact.idprocontacto__c) {
+                    idsToProcess.add(c.Id);
+                }
+            }
+        }
+    }
+
+    if (!idsToProcess.isEmpty()) {
+        ContactCalloutClass.updateEmailFromFirebase(idsToProcess);
+    }
+}

@@ -1,0 +1,39 @@
+public class ContactCalloutClass {
+
+    @future(callout=true)
+    public static void updateEmailFromFirebase(List<Id> contactIds) {
+        
+        List<Contact> contactsToProcess = [SELECT Id, idprocontacto__c FROM Contact WHERE Id IN :contactIds];
+        List<Contact> contactsToUpdate = new List<Contact>();
+
+        for (Contact con : contactsToProcess) {
+            if (String.isNotBlank(con.idprocontacto__c)) {
+                
+                String endpoint = 'https://procontacto-reclutamiento-default-rtdb.firebaseio.com/contacts/' + con.idprocontacto__c + '.json';
+                
+                Http http = new Http();
+                HttpRequest request = new HttpRequest();
+                request.setEndpoint(endpoint);
+                request.setMethod('GET');
+                
+                try {
+                    HttpResponse response = http.send(request);
+                    if (response.getStatusCode() == 200) {
+                        Map<String, Object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+                        
+                        if (results != null && results.containsKey('email')) {
+                            con.Email = (String) results.get('email');
+                            contactsToUpdate.add(con);
+                        }
+                    }
+                } catch (Exception e) {
+                    System.debug('Error: ' + e.getMessage());
+                }
+            }
+        }
+        
+        if (!contactsToUpdate.isEmpty()) {
+            update contactsToUpdate;
+        }
+    }
+}
