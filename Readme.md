@@ -1,5 +1,78 @@
 # Evaluación Técnica
 
+## Índice
+
+- [Ejercicio 1 - HTTP básico](#ejercicio-1--http-básico)
+  - [1. ¿Qué es un servidor HTTP?](#1-qué-es-un-servidor-http)
+  - [2. Verbos HTTP](#2-verbos-http)
+  - [3. Request, Response y Headers](#3-request-response-y-headers)
+  - [4. QueryString](#4-querystring)
+  - [5. Response Codes](#5-response-codes)
+  - [6. Envío de datos: GET vs POST](#6-envío-de-datos-get-vs-post)
+  - [7. Comportamiento del Navegador](#7-comportamiento-del-navegador)
+  - [8. JSON vs XML](#8-json-vs-xml)
+  - [9. Estándar SOAP](#9-estándar-soap)
+  - [10. Estándar RESTful](#10-estándar-restful)
+  - [11. Headers y Content-Type](#11-headers-y-content-type)
+
+- [Ejercicio 3 - Interacción con API REST (Postman)](#ejercicio-3-interacción-con-api-rest-postman)
+
+- [Ejercicio 4 - Módulos de Trailhead](#ejercicio-4-módulos-de-trailhead)
+
+- [Ejercicio 5 - Modelo de Datos de Salesforce](#ejercicio-5--modelo-de-datos-de-salesforce-objetos-estándar-y-relaciones)
+  - [1. Lead](#1-lead)
+  - [2. Account](#2-account)
+  - [3. Contact](#3-contact)
+  - [4. Opportunity](#4-opportunity)
+  - [5. Product](#5-product)
+  - [6. PriceBook](#6-pricebook)
+  - [7. Quote](#7-quote)
+  - [8. Asset](#8-asset)
+  - [9. Case](#9-case)
+  - [10. Article](#10-article-knowledge-article)
+
+- [Diagrama de Relaciones](#salesforce-crm--diagrama-de-relaciones-entre-objetos-estándar)
+
+- [Ejercicio 6 - Conceptos Esenciales del Desarrollo en Salesforce](#ejercicio-6--conceptos-esenciales-del-desarrollo-en-salesforce)
+  - [Soluciones de Salesforce](#soluciones-de-salesforce)
+    - [A. ¿Qué es Salesforce?](#a-qué-es-salesforce)
+    - [B. ¿Qué es Sales Cloud?](#b-qué-es-sales-cloud)
+    - [C. ¿Qué es Service Cloud?](#c-qué-es-service-cloud)
+    - [D. ¿Qué es Health Cloud?](#d-qué-es-health-cloud)
+    - [E. ¿Qué es Marketing Cloud?](#e-qué-es-marketing-cloud)
+  - [Funcionalidades de Salesforce](#Funcionalidades-de-Salesforce)
+    - [A. ¿Qué es un RecordType?](#a-qué-es-un-recordtype)
+    - [B. ¿Qué es un ReportType?](#b-qué-es-un-reporttype)
+    - [C. ¿Qué es un Page Layout?](#c-qué-es-un-page-layout)
+    - [D. ¿Qué es un Compact Layout?](#d-qué-es-un-compact-layout)
+    - [E. ¿Qué es un Perfil?](#e-qué-es-un-perfil)
+    - [F. ¿Qué es un Rol?](#f-qué-es-un-rol)
+    - [G. ¿Qué es un Validation Rule?](#g-qué-es-un-validation-rule)
+    - [H. Diferencia entre Master Detail y Lookup](#h-qué-diferencia-hay-entre-una-relación-master-detail-y-lookup)
+    - [I. ¿Qué es un Sandbox?](#i-qué-es-un-sandbox)
+    - [J. ¿Qué es un ChangeSet?](#j-qué-es-un-changeset)
+    - [K. ¿Para qué sirve el Import Wizard?](#k-para-qué-sirve-el-import-wizard)
+    - [L. ¿Para qué sirve Web to Lead?](#l-para-qué-sirve-la-funcionalidad-web-to-lead)
+    - [M. ¿Para qué sirve Web to Case?](#m-para-qué-sirve-la-funcionalidad-web-to-case)
+    - [N. ¿Para qué sirve Omnichannel?](#n-para-qué-sirve-la-funcionalidad-omnichannel)
+    - [O. ¿Para qué sirve Chatter?](#o-para-qué-sirve-la-funcionalidad-chatter)
+  - [Conceptos generales](#conceptos-generales)
+    - [A. ¿Qué significa SaaS?](#a-qué-significa-saas)
+    - [B. ¿Salesforce es SaaS?](#b-salesforce-es-saas)
+    - [C. ¿Qué significa Cloud?](#c-qué-significa-que-una-solución-sea-cloud)
+    - [D. ¿Qué significa On-Premise?](#d-qué-significa-que-una-solución-sea-on-premise)
+    - [E. ¿Qué es un pipeline de ventas?](#e-qué-es-un-pipeline-de-ventas)
+    - [F. ¿Qué es un funnel de ventas?](#f-qué-es-un-funnel-de-ventas)
+    - [G. ¿Qué es Customer Experience?](#g-qué-significa-customer-experience)
+    - [H. ¿Qué es omnicanalidad?](#h-qué-significa-omnicanalidad)
+    - [I. B2B, B2C y KPI](#i-qué-significa-que-un-negocio-sea-b2bqué-significa-que-un-negocio-sea-b2cqué-es-un-kpi)
+    - [J. ¿Qué es una API y qué es una REST API?](#j-qué-es-una-api-y-en-qué-se-diferencia-de-una-rest-api)
+    - [K. ¿Qué es un Proceso Batch?](#k-qué-es-un-proceso-batch)
+    - [L. ¿Qué es Kanban?](#l-qué-es-kanban)
+    - [M. ¿Qué es un ERP?](#m-qué-es-un-erp-enterprise-resource-planning)
+    - [N. ¿Salesforce es un ERP?](#n-salesforce-es-un-erp)
+  
+
 ## Ejercicio 1 – HTTP básico
 
 ### 1. ¿Qué es un servidor HTTP?
@@ -202,16 +275,56 @@ Para verificar la resolución de los ejercicios prácticos y los badges obtenido
 **Concepto:**  
 Representa un prospecto sin calificar. Es una persona o empresa interesada, pero aún no se determinó si vale la pena seguir el proceso de ventas.
 
-**Datos estándar que almacena:**  
-- `Company`  
-- `FirstName`  
-- `LastName`  
-- `Email`  
-- `Phone`  
-- `Status`  
-- `LeadSource`  
-- `Industry`  
-- `Rating`
+#### *Campos*
+*Campos de Información General*
+- Name
+- FirstName
+- LastName
+- Salutation
+- Title
+- GenderIdentity
+- Pronouns
+
+*Datos de Empresa*
+- Company
+- AnnualRevenue
+- NumberOfEmployees
+- NumberofLocations__c
+- SICCode__c
+- CompanyDunsNumber
+- DandbCompanyId
+- Ubicación y Contacto
+- Address
+- Phone
+- MobilePhone
+- Fax
+- Email
+- Website
+
+*Preferencias y Opt-Outs*
+- DoNotCall
+- HasOptedOutOfEmail
+- HasOptedOutOfFax
+
+*Clasificación y Segmentación*
+- Industry
+- LeadSource
+- Status
+- Rating
+- ProductInterest__c
+- Primary__c
+- Información Complementaria
+- CurrentGenerators__c
+- Description
+
+*Datos Administrativos*
+- CreatedById
+- LastModifiedById
+- OwnerId
+- IndividualId
+- CleanStatus
+- Jigsaw
+- LastTransferDate
 
 ---
 
@@ -219,15 +332,58 @@ Representa un prospecto sin calificar. Es una persona o empresa interesada, pero
 **Concepto:**  
 Entidad con la que la empresa tiene una relación comercial. Puede ser una empresa (B2B) o un consumidor (B2C).
 
-**Datos estándar:**  
-- `Name`  
-- `BillingAddress`  
-- `ShippingAddress`  
-- `Industry`  
-- `Phone`  
-- `Website`  
-- `AccountNumber`  
-- `Type`
+#### *Campos*
+*Identificación y Datos Generales*
+- Name
+- AccountNumber
+- Type
+- Ownership
+- YearStarted
+- Tradestyle
+- TickerSymbol
+- ParentId
+- DandbCompanyId
+- DunsNumber
+- NaicsCode
+- NaicsDesc
+- Sic
+- SicDesc
+
+*Clasificación, Prioridad y Segmentación*
+- AccountSource
+- Rating
+- CustomerPriority__c
+- Active__c
+- UpsellOpportunity__c
+- SLA__c
+- SLAExpirationDate__c
+- SLASerialNumber__c
+- Tier (Einstein Account Tier)
+
+*Información Comercial*
+- AnnualRevenue
+- NumberOfEmployees
+- NumberofLocations__c
+- Direcciones
+- BillingAddress
+- ShippingAddress
+- Match_Billing_Address__c
+
+*Información de Contacto*
+- Phone
+- Fax
+- Website
+- Site
+- Industria
+- Industry
+- Descripción
+- Description
+- Administrativos
+- OwnerId
+- CreatedById
+- LastModifiedById
+- CleanStatus
+- Jigsaw
 
 ---
 
@@ -235,14 +391,59 @@ Entidad con la que la empresa tiene una relación comercial. Puede ser una empre
 **Concepto:**  
 Persona asociada a una cuenta (cliente real).
 
-**Datos estándar:**  
-- `FirstName`  
-- `LastName`  
-- `Email`  
-- `Phone`  
-- `MailingAddress`  
-- `Title`  
-- `Department`
+#### *Campos*
+*Identificación Personal*
+- Name
+- FirstName
+- LastName
+- Salutation
+- GenderIdentity
+- Pronouns
+- Birthdate
+
+*Información Profesional*
+- Title
+- Department
+- Level__c
+- BuyerAttributes
+
+*Información de Contacto*
+- Phone
+- HomePhone
+- MobilePhone
+- OtherPhone
+- Fax
+- AssistantName
+- AssistantPhone
+- Email
+- MailingAddress
+- OtherAddress
+- Preferencias / Opt-Outs
+- DoNotCall
+- HasOptedOutOfEmail
+- HasOptedOutOfFax
+
+*Clasificación / Marketing*
+- LeadSource
+- ContactSource
+- Languages__c
+- Prequalified__c
+- Loan_Amount__c
+- Descripción
+- Description
+
+*Campos Administrativos*
+- OwnerId
+- CreatedById
+- LastModifiedById
+- LastCURequestDate
+- LastCUUpdateDate
+- CleanStatus
+- Jigsaw
+- idprocontacto__c
+- IndividualId
+- AccountId
+- ReportsToId
 
 ---
 
@@ -250,13 +451,41 @@ Persona asociada a una cuenta (cliente real).
 **Concepto:**  
 Representa un posible negocio o venta en curso asociada a una Cuenta.
 
-**Datos estándar:**  
-- `Name`  
-- `StageName`  
-- `Amount`  
-- `CloseDate`  
-- `Probability`  
-- `LeadSource`
+#### *Campos*
+*Identificación y Datos Principales*
+- Name
+- StageName
+- CloseDate
+- Amount
+- Probability
+- ExpectedRevenue
+- TotalOpportunityQuantity
+- Type
+- ForecastCategoryName
+- IsPrivate
+
+*Información Comercial y de Seguimiento*
+- NextStep
+- Description
+- MainCompetitors__c
+- CurrentGenerators__c
+- DeliveryInstallationStatus__c
+- OrderNumber__c
+- TrackingNumber__c
+- IqScore
+- Origen y Marketing
+- LeadSource
+- CampaignId
+
+*Relaciones Comerciales*
+- AccountId
+- ContractId
+- Pricebook2Id
+
+*Campos Administrativos*
+- OwnerId
+- CreatedById
+- LastModifiedById
 
 ---
 
@@ -264,11 +493,28 @@ Representa un posible negocio o venta en curso asociada a una Cuenta.
 **Concepto:**  
 Producto o servicio que vende la empresa.
 
-**Datos estándar:**  
-- `Name`  
-- `ProductCode`  
-- `Description`  
-- `IsActive`
+#### *Campos*
+*Identificación del Producto*
+- Name
+- ProductCode
+- StockKeepingUnit
+- Family
+- QuantityUnitOfMeasure
+
+*Información Comercial*
+- Description
+- DisplayUrl
+- ExternalId
+- Estado
+- IsActive
+- Relaciones
+- ExternalDataSourceId
+- SellerId
+- SourceProductId
+
+*Campos Administrativos*
+- CreatedById
+- LastModifiedById
 
 ---
 
@@ -276,9 +522,18 @@ Producto o servicio que vende la empresa.
 **Concepto:**  
 Lista de precios que contiene productos y sus valores asociados.
 
-**Datos estándar:**  
-- `Name`  
-- `IsActive`
+#### *Campos*
+*Identificación*
+- Name
+- Description
+
+*Estado*
+- IsActive
+- IsStandard
+
+*Campos Administrativos*
+- CreatedById
+- LastModifiedById
 
 ---
 
@@ -286,12 +541,99 @@ Lista de precios que contiene productos y sus valores asociados.
 **Concepto:**  
 Presupuesto o cotización formal que se envía a un cliente con precios y productos.
 
-**Datos estándar:**  
-- `Name`  
-- `Status`  
-- `ExpirationDate`  
-- `Subtotal`  
-- `TotalPrice`
+#### *Campos*
+*Identificación*
+- Name
+- QuoteNumber
+- Status
+- RecordTypeId
+- CalculationStatus
+
+*Relaciones*
+- AccountId
+- QuoteAccountId
+- OpportunityId
+- ContactId
+- ContractId
+- BillToContactId
+- Pricebook2Id
+- RelatedWorkId
+
+*Direcciones – Additional Address*
+- AdditionalAddress
+- AdditionalName
+- AdditionalStreet
+- AdditionalCity
+- AdditionalState
+- AdditionalStateCode
+- AdditionalPostalCode
+- AdditionalCountry
+- AdditionalCountryCode
+- AdditionalLatitude
+- AdditionalLongitude
+
+*Direcciones – Billing Address*
+- BillingAddress
+- BillingName
+- BillingStreet
+- BillingCity
+- BillingState
+- BillingStateCode
+- BillingPostalCode
+- BillingCountry
+- BillingCountryCode
+- BillingLatitude
+- BillingLongitude
+
+*Direcciones – Shipping Address*
+- ShippingAddress
+- ShippingName
+- ShippingStreet
+- ShippingCity
+- ShippingState
+- ShippingStateCode
+- ShippingPostalCode
+- ShippingCountry
+- ShippingCountryCode
+- ShippingLatitude
+- ShippingLongitude
+- ShippingHandling
+
+*Direcciones – Quote To Address*
+- QuoteToAddress
+- QuoteToName
+- QuoteToStreet
+- QuoteToCity
+- QuoteToState
+- QuoteToPostalCode
+- QuoteToCountry
+- QuoteToLatitude
+- QuoteToLongitude
+
+*Datos Comerciales*
+- ExpirationDate
+- Discount
+- Subtotal
+- Tax
+- TotalPrice
+- TotalPriceWithTax
+- TotalTaxAmount
+- GrandTotal
+- LineItemCount
+- IsSyncing
+- CanCreateQuoteLineItems
+
+*Información de Contacto*
+- Phone
+- Fax
+- Email
+- Moneda
+- CurrencyIsoCode
+- Texto y Descripción
+- Description
+- Auditoría
+- LastReferencedDate
+- LastViewedDate
 
 ---
 
@@ -299,12 +641,62 @@ Presupuesto o cotización formal que se envía a un cliente con precios y produc
 **Concepto:**  
 Producto físico o servicio adquirido por un cliente. Representa lo que el cliente **ya posee**.
 
-**Datos estándar:**  
-- `Name`  
-- `SerialNumber`  
-- `InstallDate`  
-- `Status`  
-- `Quantity`
+#### *Campos*
+*Identificación*
+- Name
+- SerialNumber
+- ExternalIdentifier
+- Uuid
+- ProductCode
+
+*Relaciones*
+- AccountId
+- ContactId
+- OwnerId
+- AssetProvidedById
+- AssetServicedById
+- LocationId
+- ParentId
+- RootAssetId
+- Product2Id
+
+*Dirección*
+- Address
+
+*Datos del Activo*
+- AssetLevel
+- IsCompetitorProduct
+- IsInternal
+- HasLifecycleManagement
+- Status
+- StatusReason
+- ProductFamily
+- StockKeepingUnit
+- ProductDescription
+
+*Fechas y Ciclo de Vida*
+- InstallDate
+- PurchaseDate
+- ManufactureDate
+- LifecycleStartDate
+- LifecycleEndDate
+- CurrentLifecycleEndDate
+- UsageEndDate
+
+*Valores y Cantidades*
+- Quantity
+- CurrentQuantity
+- Price
+- CurrentAmount
+- CurrentMrr
+- TotalLifecycleAmount
+
+*Texto y Descripción*
+- Description
+
+*Auditoría*
+- CreatedById
+- LastModifiedById
 
 ---
 
@@ -312,13 +704,63 @@ Producto físico o servicio adquirido por un cliente. Representa lo que el clien
 **Concepto:**  
 Reclamo o solicitud de servicio del cliente (soporte o atención).
 
-**Datos estándar:**  
-- `Subject`  
-- `Description`  
-- `Status`  
-- `Priority`  
-- `Origin`  
-- `CaseNumber`
+#### *Campos*
+*Identificación*
+- CaseNumber
+- Subject
+
+*Relaciones*
+- AccountId
+- ContactId
+- AssetId
+- ProductId
+- OwnerId
+- ParentId
+- EntitlementId
+- ServiceContractId
+- BusinessHoursId
+
+*Información del Cliente*
+- ContactEmail
+- ContactPhone
+- ContactMobile
+- ContactFax
+- SuppliedName
+- SuppliedEmail
+- SuppliedPhone
+- SuppliedCompany
+
+*Clasificación del Caso*
+- Origin
+- Reason
+- Type
+- Priority
+- Status
+- Product__c
+- PotentialLiability__c
+- SLAViolation__c
+
+*Fechas y Tiempos*
+- CreatedDate
+- ClosedDate
+- SlaStartDate
+- SlaExitDate
+- StopStartDate
+
+*Indicadores y Seguimiento*
+- IsClosedOnCreate
+- IsEscalated
+- IsStopped
+- MilestoneStatus
+
+*Texto y Descripción*
+- Description
+- Comments
+- EngineeringReqNumber__c
+
+*Auditoría*
+- CreatedById
+- LastModifiedById
 
 ---
 
@@ -326,13 +768,26 @@ Reclamo o solicitud de servicio del cliente (soporte o atención).
 **Concepto:**  
 Documento dentro de la Base de Conocimientos de Salesforce (FAQ, instructivos, troubleshooting).
 
-**Datos estándar:**  
-- `Title`  
-- `Summary`  
-- `URLName`  
-- `ArticleNumber`  
-- `ArticleType`  
-- `PublishStatus`
+#### *Campos*
+*Identificación*
+- ArticleNumber
+- MasterLanguage
+
+*Publicación*
+- FirstPublishedDate
+- LastPublishedDate
+- ArchivedDate
+- ArchivedById
+- IsGeneratedByLlm
+
+*Uso y Métricas*
+- TotalViewCount
+- CaseAssociationCount
+- LastViewedDate
+- LastReferencedDate
+
+*Migración*
+- MigratedToFromArticle
 
 ---
 
