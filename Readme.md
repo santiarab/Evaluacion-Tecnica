@@ -71,6 +71,7 @@
     - [L. ¿Qué es Kanban?](#l-qué-es-kanban)
     - [M. ¿Qué es un ERP?](#m-qué-es-un-erp-enterprise-resource-planning)
     - [N. ¿Salesforce es un ERP?](#n-salesforce-es-un-erp)
+- [Ejercicio 7 – Ejercicio de Trigger + Callout (Procontacto)](#Ejercicio-7-–-Ejercicio-de-Trigger-+-Callout-(Procontacto))
   
 
 ## Ejercicio 1 – HTTP básico
@@ -985,7 +986,7 @@ Es un sistema de Planificación de Recursos Empresariales. Gestiona los procesos
 
 ---
 
-## Punto 7 – Ejercicio de Trigger + Callout (Procontacto)
+## Ejecicio 7 – Ejercicio de Trigger + Callout (Procontacto)
 
 En este ejercicio se desarrolló la integración entre Salesforce y el servicio web de Procontacto para actualizar automáticamente el correo electrónico de un contacto según su idprocontacto.
 
