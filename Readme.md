@@ -71,8 +71,7 @@
     - [L. ¿Qué es Kanban?](#l-qué-es-kanban)
     - [M. ¿Qué es un ERP?](#m-qué-es-un-erp-enterprise-resource-planning)
     - [N. ¿Salesforce es un ERP?](#n-salesforce-es-un-erp)
-- [Ejercicio 7 – Ejercicio de Trigger + Callout (Procontacto)](#Ejercicio-7-–-Ejercicio-de-Trigger-+-Callout-(Procontacto))
-  
+- [Ejercicio 7 – Ejercicio de Trigger + Callout (Procontacto)](#Ejercicio-7---Ejercicio-de-Trigger-+-Callout-(Procontacto))
 
 ## Ejercicio 1 – HTTP básico
 
